@@ -1,0 +1,25 @@
+---
+// src/components/Footer.astro
+import SocialLinks from './SocialLinks.astro'; // Descomponemos las redes sociales en su propio componente
+
+const currentYear = new Date().getFullYear();
+---
+<footer class="bg-slate-200 dark:bg-slate-800 py-8 text-center text-slate-600 dark:text-slate-400">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col items-center space-y-4">
+      
+      <!-- Sección de Redes Sociales -->
+      <SocialLinks />
+
+      <!-- Sección de Copyright -->
+      <div>
+        <p>© {currentYear} Ander Salamanca. Todos los derechos reservados.</p>
+        <p class="text-sm mt-1">
+          Hecho con <a href="https://astro.build/" target="_blank" class="text-sky-500 hover:underline">Astro</a> 
+          y <a href="https://tailwindcss.com/" target="_blank" class="text-sky-500 hover:underline">Tailwind CSS</a>.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,17 @@
+---
+
+// Centralizamos los datos aquí. Podrían venir de props si quisiéramos reutilizarlo más
+const socialLinks = [
+  { href: "https://github.com/tu-usuario", label: "GitHub" },
+  { href: "https://linkedin.com/in/tu-usuario", label: "LinkedIn" },
+  { href: "https://twitter.com/tu-usuario", label: "Twitter" },
+];
+---
+<div class="flex justify-center gap-6">
+  {socialLinks.map(link => (
+    <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link.label} class="hover:text-sky-500 dark:hover:text-sky-400 hover:scale-110 transition-transform">
+      <!-- En un proyecto real, aquí irían iconos SVG -->
+      <span class="text-2xl font-bold">{link.label.charAt(0)}</span>
+    </a>
+  ))}
+</div>

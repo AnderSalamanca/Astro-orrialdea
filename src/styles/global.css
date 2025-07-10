@@ -1,0 +1,13 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+.section-fade-in {
+    opacity: 0;
+    transform: translateY(2rem); /* Empieza 2rem más abajo */
+    transition: opacity 600ms ease-out, transform 600ms ease-out;
+  }
+  
+  .section-fade-in.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }

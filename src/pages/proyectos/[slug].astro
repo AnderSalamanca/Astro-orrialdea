@@ -1,0 +1,37 @@
+---
+// src/pages/proyectos/[slug].astro
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro'; // Nuestro layout base
+import { Image } from 'astro:assets';
+
+// 1. Astro ejecuta esto para saber qué páginas crear
+export async function getStaticPaths() {
+  const proyectos = await getCollection('proyectos');
+  return proyectos.map(proyecto => ({
+    params: { slug: proyecto.slug }, // El slug irá en la URL
+    props: { proyecto }, // Pasamos el proyecto completo como prop
+  }));
+}
+
+// 2. Recibimos el proyecto específico para esta página
+const { proyecto } = Astro.props;
+const { Content } = await proyecto.render(); // Obtenemos el contenido HTML del Markdown
+---
+<Layout pageTitle={proyecto.data.title}>
+  <article class="max-w-4xl mx-auto py-8">
+    <Image 
+      src={proyecto.data.coverImage} 
+      alt={proyecto.data.coverAlt}
+      width={900}
+      height={400}
+      format="webp"
+      class="w-full h-auto max-h-[400px] object-cover rounded-lg mb-8"
+    />
+    <h1 class="text-4xl md:text-5xl font-extrabold mb-4">{proyecto.data.title}</h1>
+    <!-- ... resto de metadatos como en el ProjectLayout anterior ... -->
+    <hr class="my-8"/>
+    <div class="prose dark:prose-invert max-w-none">
+      <Content /> <!-- 3. Renderizamos el contenido del .md -->
+    </div>
+  </article>
+</Layout>
