@@ -6,4 +6,4 @@ tags: ["Astro", "Tailwind", "Portfolio"]
 coverImage: "../../assets/cista.jpeg"
 coverAlt: "Captura de pantalla de un sitio web."
 ---
-El contenido detallado del proyecto va aquí...
+Cista harria
