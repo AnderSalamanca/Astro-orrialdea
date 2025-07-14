@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getCollection, getEntry } from 'astro:content';
-
+import Card from "../components/Card.astro";
 
 ---
 
@@ -22,11 +22,15 @@ import { getCollection, getEntry } from 'astro:content';
       </section>
 
       <section>
-
-
-
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-align ">
+        <Card />
+        <Card />
+        <Card />
+        </div>
+      </div>
       </section>
-
+</Layout>
       <Fragment slot="after-footer-scripts">
         <script>
           import '../scripts/scroll-animations.js';
