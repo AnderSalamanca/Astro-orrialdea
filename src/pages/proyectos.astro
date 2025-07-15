@@ -2,7 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { getCollection, getEntry } from 'astro:content';
 import Card from "../components/Card.astro";
-
+const allPosts = await getCollection('proyectos');
 ---
 
 <Layout pageTitle="Proyectos">
@@ -24,9 +24,14 @@ import Card from "../components/Card.astro";
       <section>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-align ">
-        <Card />
-        <Card />
-        <Card />
+          {allPosts.map((post) => (
+            <Card 
+              title={post.data.title} 
+              description={post.data.description} 
+              coverImage={post.data.coverImage}
+              coverAlt={post.data.coverAlt} 
+            />
+          ))}
         </div>
       </div>
       </section>

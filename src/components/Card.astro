@@ -1,5 +1,6 @@
 ---
-
+const { title, description, coverImage, coverAlt } = Astro.props;
+import { Image } from 'astro:assets';
 ---
 
 <div class="group max-w-sm rounded-lg overflow-hidden shadow-lg bg-white dark:bg-slate-800 transition-all duration-300 hover:shadow-2xl hover:-translate-y-1">
@@ -7,19 +8,25 @@
     <!-- Contenedor de la Imagen (para efecto de zoom) -->
     <div class="overflow-hidden">
       <!-- Imagen de la Tarjeta -->
-      <img class="w-full transition-transform duration-300 group-hover:scale-105" src="https://via.placeholder.com/400x250" alt="Descripción de la imagen">
+      <Image 
+    class="w-full transition-transform duration-300 group-hover:scale-105"
+    src={coverImage} 
+    alt={coverAlt}
+    width={800}   
+    height={600}  
+  />
     </div>
   
     <!-- Contenido de la Tarjeta -->
     <div class="px-6 py-4">
       <!-- Título -->
       <h3 class="font-bold text-xl mb-2 text-slate-900 dark:text-slate-100 group-hover:text-sky-500 dark:group-hover:text-sky-400">
-        Tarjeta Interactiva
+        {title}
       </h3>
       
       <!-- Descripción -->
       <p class="text-slate-700 dark:text-slate-300 text-base">
-        Esta tarjeta tiene efectos al pasar el ratón. Se eleva ligeramente, la sombra se intensifica, la imagen se acerca y el título cambia de color.
+        {description}
       </p>
     </div>
     
