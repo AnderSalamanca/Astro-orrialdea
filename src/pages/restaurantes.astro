@@ -1,0 +1,26 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Image  from "astro/components/Image.astro";
+import RestaurantCard from "../components/RestaurantCard.astro";
+---
+
+<Layout pageTitle="Restaurantes">
+  <section class="py-16">
+    <h1 class="text-3xl font-bold text-center mb-8">Restaurantes</h1>
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {await getCollection("restaurantes").then(restaurantes => 
+        restaurantes.map(restaurante => (
+          <RestaurantCard
+            slug={restaurante.slug}
+            name={restaurante.data.name}
+            cuisine={restaurante.data.cuisine}
+            priceRange={restaurante.data.priceRange}
+            image={restaurante.data.image}
+            imageAlt={restaurante.data.imageAlt}
+            rating={restaurante.data.rating}
+            />
+        ))
+      )}
+    </div>
+  </section>

@@ -1,0 +1,26 @@
+---
+const {name, cuisine, priceRange, image, imageAlt, rating, slug} = Astro.props;
+
+import { Image } from "astro:assets";
+
+---
+
+<a href={`/restaurantes/${slug}`} class= "block group">
+
+    <div class="bg-white dark:bg-slate-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+
+        <Image 
+            class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+            src={image} 
+            alt={imageAlt}
+            width={800}   
+            height={600}
+            format="webp"
+            />
+
+
+    </div>
+
+
+
+</a>
