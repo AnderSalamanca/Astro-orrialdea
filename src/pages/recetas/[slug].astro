@@ -1,0 +1,17 @@
+---
+import { getCollection, getEntry } from 'astro:content';
+import Layout from '../../layouts/Layout.astro'; // Nuestro layout base
+import { Image } from 'astro:assets';
+
+// 1. Astro ejecuta esto para saber qué páginas crear
+export async function getStaticPaths() {
+  const recetas = await getCollection('recetas');
+  return recetas.map(receta => ({
+    params: { slug: receta.slug }, // El slug irá en la URL
+    props: { receta }, // Pasamos el restaurante completo como prop
+  }));
+}
+
+const { receta } = Astro.props;
+const { Content } = await receta.render(); // Obtenemos el contenido HTML del Markdown
+---
