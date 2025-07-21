@@ -36,7 +36,35 @@ const restaurantCollection = defineCollection({
   }),
 });
 
+const recetasCollection = defineCollection({
+  type: 'content',
+  schema: ({ image }) => z.object({
+    title: z.string(),
+    servings: z.number(),
+    image: image(),
+    imageAlt: z.string(),
+    pubDate: z.date().optional(), // Para ordenar por fecha
+    description: z.string(), // Para resúmenes y SEO
+    
+    // Tiempo de cocción en minutos (más fácil de ordenar/filtrar)
+    cookingTime: z.number().describe('Tiempo de cocción en minutos'),
+    
+    // Ingredientes con más estructura (opcional, pero potente)
+    ingredients: z.array(z.object({
+        amount: z.string(), // ej: "200g", "1 taza", "al gusto"
+        name: z.string(),   // ej: "Harina de trigo"
+    })),
+    
+    // Etiquetas para filtrar
+    tags: z.array(z.string()).optional(),
+    
+    // Dificultad con valores predefinidos
+    difficulty: z.enum(['Fácil', 'Intermedia', 'Difícil']),
+  }),
+});
+
 export const collections = {
   'proyectos': projectCollection,
   'restaurantes': restaurantCollection,
+  'recetas': recetasCollection,
 };
