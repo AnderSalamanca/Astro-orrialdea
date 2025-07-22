@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import image from '../assets/hero_principal.png'; // Asegúrate de que la ruta sea correcta
+---
+
+<section class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center section-fade-in">
+    
+    <Image
+        src={image}
+        alt="Imagen princpipal de la página de inicio"
+        class="absolute inset-0 w-full h-full object-cover"
+        width={1600}
+        height={900}
+        format="webp"
+    />
+    <!-- Capa de superposición oscura (opcional pero muy recomendado) -->
+    <div class="absolute inset-0 bg-black/50"></div>
+
+    <!-- Contenedor del contenido (centrado y con ancho máximo) -->
+    <div class="relative z-10 max-w-4xl mx-auto px-4">
+        <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
+          El Sabor Entra por los Ojos
+        </h1>
+        <p class="mt-4 text-lg md:text-xl text-slate-200 max-w-2xl mx-auto">
+          Un viaje personal a través de los mejores restaurantes y las recetas que nacen en mi cocina. Descubre, cocina y disfruta.
+        </p>
+        
+        <!-- Contenedor de botones (sin cambios, ya están perfectos) -->
+        <div class="mt-8 flex justify-center gap-4">
+          <a href="/recetas" class="bg-sky-500 hover:bg-sky-600 text-white font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">
+            Ver mis recetas
+          </a>
+          <a href="/restaurantes" class="bg-white/10 backdrop-blur-sm hover:bg-white/20 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+            Restaurantes
+          </a>
+        </div>
+      </div>
+    
+  </section>
