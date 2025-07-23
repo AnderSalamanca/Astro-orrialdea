@@ -20,16 +20,28 @@ export default {
   theme: {
     extend: {
       colors: {
-        'background': '#F8F5F2', // Fondo crema suave
-        'foreground': '#2E2E2E', // Texto principal gris oscuro
+        'background': '#F8F5F2',
+        'background-subtle': '#FFFFFF',
+        'dark-background': '#1E2228',
+        'dark-background-subtle': '#2A3038',
+        
+        // Textos
+        'foreground': '#2E2E2E',
+        'foreground-muted': '#6B7280',
+        'dark-foreground': '#EFEFEF',
+        'dark-foreground-muted': '#9CA3AF',
+
+        // Bordes
+        'border': '#D1D5DB',
+        'dark-border': '#374151',
+
+        // Acento Primario
         'primary': '#C05A3A',
+        'primary-foreground': '#FDFBF9',
+
+        // Acento Secundario
         'secondary': '#707954',
-        // --- CAMBIO IMPORTANTE ---
-        // Definimos los colores base
-        'brand-bg': '#F8F5F2', // Fondo claro
-        'brand-fg': '#2E2E2E', // Texto claro
-        'dark-bg': '#1E2228',  // Fondo oscuro
-        'dark-fg': '#EFEFEF',  // Texto oscuro
+        'secondary-foreground': '#FDFBF9',
       }
     },
   },

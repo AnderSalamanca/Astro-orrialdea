@@ -16,7 +16,7 @@ export default function MobileMenu({ navLinks }) {
       {/* El Botón de Hamburguesa */}
       <button onClick={toggleMenu} class="relative z-20">
         <svg
-          class="h-6 w-6 text-slate-900 dark:text-white"
+          class="h-6 w-6 text-foreground dark:text-white"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -34,7 +34,7 @@ export default function MobileMenu({ navLinks }) {
       {/* Usamos una transición de CSS para que aparezca suavemente */}
       <div
         class={`
-          absolute top-0 left-0 w-full bg-slate-100 dark:bg-slate-900 transition-transform duration-300 ease-in-out
+          absolute top-0 left-0 w-full bg-background dark:bg-slate-900 transition-transform duration-300 ease-in-out
           ${isOpen ? 'translate-y-0' : '-translate-y-full'}
           z-10 pt-20 pb-8
         `}

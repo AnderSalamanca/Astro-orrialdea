@@ -16,5 +16,5 @@
   }
 
   #main-header.header-scrolled {
-    @apply bg-brand-bg/95 dark:bg-dark-bg/95 backdrop-blur-sm shadow-md;
+    @apply bg-background/95 dark:bg-dark-background/95 backdrop-blur-sm shadow-md;
   }
