@@ -3,7 +3,7 @@
 const header = document.querySelector('#main-header');
 
 // Guardamos las clases del estado "scrolled" en una variable para más limpieza
-const scrollClasses = ['bg-white/95', 'dark:bg-slate-900/95', 'backdrop-blur-sm', 'shadow-md'];
+const scrollClasses = ['bg-background', 'dark:bg-slate-900/95', 'backdrop-blur-sm', 'shadow-md'];
 
 // La función que se ejecutará cada vez que el usuario haga scroll
 const handleScroll = () => {
