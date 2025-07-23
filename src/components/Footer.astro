@@ -1,11 +1,20 @@
 ---
 // src/components/Footer.astro
-import SocialLinks from './SocialLinks.astro'; // Descomponemos las redes sociales en su propio componente
 
+// Importamos el componente de nuestras redes sociales
+import SocialLinks from './SocialLinks.astro';
+
+// Obtenemos el año actual para el copyright y lo guardamos en una constante
 const currentYear = new Date().getFullYear();
 ---
+
+<!-- Declaramos el footer con sus colores y alineamos al centro el texto, tambien aplicamos un padding vertical de 8 -->
 <footer class="bg-slate-200 dark:bg-slate-800 py-8 text-center text-slate-600 dark:text-slate-400">
+
+  <!-- Contenedor para alinear el contenido, ponemos una anchura maxima, ponemos los margenel laterales en auto y ajustamos padding en base a tamaño de pantalla -->
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Contenedor para centrar el contenido y poner un espacio entre los elementos -->
     <div class="flex flex-col items-center space-y-4">
       
       <!-- Sección de Redes Sociales -->
@@ -13,10 +22,14 @@ const currentYear = new Date().getFullYear();
 
       <!-- Sección de Copyright -->
       <div>
+
         <p>© {currentYear} Ander Salamanca. Todos los derechos reservados.</p>
+
         <p class="text-sm mt-1">
+
           Hecho con <a href="https://astro.build/" target="_blank" class="text-sky-500 hover:underline">Astro</a> 
           y <a href="https://tailwindcss.com/" target="_blank" class="text-sky-500 hover:underline">Tailwind CSS</a>.
+          
         </p>
       </div>
 

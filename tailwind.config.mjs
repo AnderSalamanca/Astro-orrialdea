@@ -11,6 +11,10 @@ export default {
     'dark:bg-slate-900/95',
     'backdrop-blur-sm',
     'shadow-md',
+    'bg-brand-bg/95',
+    'dark:bg-dark-bg/95',
+    'backdrop-blur-sm',
+    'shadow-md',
   ],
 
   theme: {
@@ -18,8 +22,14 @@ export default {
       colors: {
         'background': '#F8F5F2', // Fondo crema suave
         'foreground': '#2E2E2E', // Texto principal gris oscuro
-        'primary': '#C05A3A',    // Acento principal terracota
+        'primary': '#C05A3A',
         'secondary': '#707954',
+        // --- CAMBIO IMPORTANTE ---
+        // Definimos los colores base
+        'brand-bg': '#F8F5F2', // Fondo claro
+        'brand-fg': '#2E2E2E', // Texto claro
+        'dark-bg': '#1E2228',  // Fondo oscuro
+        'dark-fg': '#EFEFEF',  // Texto oscuro
       }
     },
   },

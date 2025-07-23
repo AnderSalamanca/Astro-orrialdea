@@ -10,3 +10,11 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  #main-header {
+    @apply bg-transparent transition-all duration-300 ease-in-out;
+  }
+
+  #main-header.header-scrolled {
+    @apply bg-brand-bg/95 dark:bg-dark-bg/95 backdrop-blur-sm shadow-md;
+  }
