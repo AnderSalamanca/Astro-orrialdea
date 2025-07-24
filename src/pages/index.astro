@@ -5,22 +5,25 @@ import MainHero from '../components/MainHero.astro';
 // ...otros imports si los tienes
 ---
 <Layout pageTitle="Inicio">
-  <!-- ================================================== -->
-  <!-- ===== COMIENZA NUESTRA SECCIÓN HERO ============ -->
-  <!-- ================================================== -->
+
+  <!-- Aquí empieza el Hero principal -->
   <MainHero />
-  <!-- ================================================== -->
-  <!-- ====== FIN DE NUESTRA SECCIÓN HERO ============= -->
-  <!-- ================================================== -->
 
   <!-- Aquí podría empezar el resto de tu contenido -->
   <section class="py-16">
+
     <h2 class="text-3xl font-bold text-center">Contenido debajo del Hero</h2>
+
   </section>
 
   <Fragment slot="after-footer-scripts">
+
     <script>
+
       import '../scripts/scroll-animations.js';
+
     </script>
+
   </Fragment>
+  
 </Layout>

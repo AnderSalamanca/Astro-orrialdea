@@ -15,7 +15,6 @@ export async function getStaticPaths() {
 }
 
 const { restaurante } = Astro.props;
-console.log('En [slug].astro, esto es restaurante.data.image:', restaurante.data.image); 
 const { Content } = await restaurante.render(); // Obtenemos el contenido HTML del Markdown
 ---
 

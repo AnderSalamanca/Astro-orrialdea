@@ -3,20 +3,28 @@ const sectionsToAnimate = document.querySelectorAll('.section-fade-in');
 
 // Si no hay elementos que animar en esta página, no hacemos nada más.
 if (sectionsToAnimate.length > 0) {
+  
   // 2. Opciones para el observador
   const options = {
+
     root: null,
     rootMargin: '0px',
     threshold: 0.2
+
   };
 
   // 3. La función callback
   const callback = (entries, observer) => {
+
     entries.forEach(entry => {
+
       if (entry.isIntersecting) {
+
         entry.target.classList.add('is-visible');
         observer.unobserve(entry.target);
+
       }
+
     });
   };
 
@@ -25,6 +33,8 @@ if (sectionsToAnimate.length > 0) {
 
   // 5. Le decimos que observe cada sección
   sectionsToAnimate.forEach(section => {
+
     observer.observe(section);
+
   });
 }

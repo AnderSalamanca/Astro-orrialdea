@@ -3,12 +3,23 @@ import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 import Image  from "astro/components/Image.astro";
 import RestaurantCard from "../components/RestaurantCard.astro";
+import GenericHero from "../components/GenericHero.astro";
+import heroImage from "../assets/restaurantes/restaurant-hero.png";
 ---
 
 <Layout pageTitle="Restaurantes">
+
+  <GenericHero
+    name="Restaurantes"
+    image={heroImage}
+    imageAlt="Imagen de un restaurante con mesas y sillas"
+
+    />
+
   <section class="py-16">
-    <h1 class="text-3xl font-bold text-center mb-8">Restaurantes</h1>
+
     <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
       {await getCollection("restaurantes").then(restaurantes => 
         restaurantes.map(restaurante => (
           <RestaurantCard
@@ -23,5 +34,17 @@ import RestaurantCard from "../components/RestaurantCard.astro";
             />
         ))
       )}
+
     </div>
+
   </section>
+
+  <Fragment slot="after-footer-scripts">
+
+    <script>
+
+      import '../scripts/scroll-animations.js';
+      
+    </script>
+  </Fragment>
+</Layout>

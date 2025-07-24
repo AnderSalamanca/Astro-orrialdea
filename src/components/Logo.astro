@@ -10,13 +10,6 @@
   xmlns="http://www.w3.org/2000/svg" 
   viewBox="0 0 115 48"
 >
-  <!-- 
-    MODIFICACIONES REALIZADAS AL SVG ORIGINAL:
-    1. Se eliminó el atributo `fill="#17191E"` de las etiquetas <path> para que puedan heredar el color de la clase.
-    2. Se conservó el `fill="url(#a)"` para mantener el gradiente de color del diseño original.
-    3. Se eliminaron los atributos `width="115"` y `height="48"` para controlar el tamaño con clases de Tailwind (h-12 w-auto).
-    4. Se añadió el atributo `viewBox="0 0 115 48"`. ¡Esto es CRUCIAL para que el SVG escale correctamente!
-  -->
 
   <path d="M7.77 36.35C6.4 35.11 6 32.51 6.57 30.62c.99 1.2 2.35 1.57 3.75 1.78 2.18.33 4.31.2 6.33-.78.23-.12.44-.27.7-.42.18.55.23 1.1.17 1.67a4.56 4.56 0 0 1-1.94 3.23c-.43.32-.9.61-1.34.91-1.38.94-1.76 2.03-1.24 3.62l.05.17a3.63 3.63 0 0 1-1.6-1.38 3.87 3.87 0 0 1-.63-2.1c0-.37 0-.74-.05-1.1-.13-.9-.55-1.3-1.33-1.32a1.56 1.56 0 0 0-1.63 1.26c0 .06-.03.12-.05.2Z"/>
   
@@ -28,10 +21,14 @@
   
   <!-- La definición del gradiente debe permanecer dentro del SVG -->
   <defs>
+
     <linearGradient id="a" x1="6.33" x2="19.43" y1="40.8" y2="34.6" gradientUnits="userSpaceOnUse">
+
       <stop stop-color="#D83333"/>
       <stop offset="1" stop-color="#F041FF"/>
+      
     </linearGradient>
+
   </defs>
 </svg>
 </a>

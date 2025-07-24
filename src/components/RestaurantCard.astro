@@ -1,84 +1,96 @@
 ---
-const {name, cuisine, priceRange, image, imageAlt, rating, slug, location} = Astro.props;
+const { name, cuisine, priceRange, image, imageAlt, rating, slug, location } =
+    Astro.props;
 
 import { Image } from "astro:assets";
-
 ---
 
-<a href={`/restaurantes/${slug}`} class= "block group">
-
-    <div class="bg-transparent dark:bg-slate-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1">
-
+<a href={`/restaurantes/${slug}`} class="block group">
+    <div
+        class="bg-transparent dark:bg-slate-800 rounded-xl overflow-hidden transition-all duration-300 hover:shadow-md hover:-translate-y-1"
+    >
         <div>
-        <Image 
-            class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-            src={image} 
-            alt={imageAlt}
-            width={800}   
-            height={600}
-            format="webp"
+            <Image
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                src={image}
+                alt={imageAlt}
+                width={800}
+                height={600}
+                format="webp"
             />
         </div>
 
-        <div class="p-4 flex flex-col flex-grow"> 
-
-            <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-sky-500 transition-colors">
+        <div class="p-4 flex flex-col flex-grow">
+            <h3
+                class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-sky-500 transition-colors"
+            >
                 {name}
             </h3>
 
             <div class="flex items-center gap-4 mb-3 text-sm">
                 <!-- Puntuación -->
-                <div class="flex items-center gap-1.5 text-slate-800 dark:text-slate-200">
-                    
+                <div
+                    class="flex items-center gap-1.5 text-slate-800 dark:text-slate-200"
+                >
                     <!-- === SVG CORREGIDO Y "TAILWINDIZADO" === -->
-                    <svg 
-                        class="w-4 h-4 text-amber-500" 
-                        xmlns="http://www.w3.org/2000/svg" 
+                    <svg
+                        class="w-4 h-4 text-amber-500"
+                        xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 51 48"
-                        fill="currentColor" 
+                        fill="currentColor"
                         aria-hidden="true"
                     >
                         <title>Puntuación</title>
-                        <path d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"/>
+                        <path
+                            d="m25,1 6,17h18l-14,11 5,17-15-10-15,10 5-17-14-11h18z"
+                        ></path>
                     </svg>
-            
+
                     <span class="font-bold">{rating}</span>
                     <span class="text-slate-500 dark:text-slate-400">/ 5</span>
                 </div>
-            
+
                 <!-- Precio -->
-                {priceRange && (
-                    <div class="text-slate-600 dark:text-slate-300 font-medium">
-                        {priceRange}
-                    </div>
-                )}
+                {
+                    priceRange && (
+                        <div class="text-slate-600 dark:text-slate-300 font-medium">
+                            {priceRange}
+                        </div>
+                    )
+                }
             </div>
-            
+
             <!-- 2. Contenedor para las píldoras. -->
-           <!-- 3. Las Píldoras de Cocina. Mantenemos este diseño porque es bueno para categorías. -->
-           <div class="flex flex-wrap gap-2 mb-4">
-            {cuisine.map((cuisineKind) => (
-                <span class="bg-primary/60 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-sky-900 dark:text-sky-200">
-                    {cuisineKind}
-                </span>
-            ))}
-        </div>
-
-        <!-- Ubicación (empujada al final) -->
-        <div class="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2">
-            <svg class="w-4 h-4 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 90 90" fill="currentColor" aria-hidden="true">
-                <title>Ubicación</title>
-                <path d="M 45 0 C 25.463 0 9.625 15.838 9.625 35.375 c 0 8.722 3.171 16.693 8.404 22.861 L 45 90 l 26.97 -31.765 c 5.233 -6.167 8.404 -14.139 8.404 -22.861 C 80.375 15.838 64.537 0 45 0 z M 45 48.705 c -8.035 0 -14.548 -6.513 -14.548 -14.548 c 0 -8.035 6.513 -14.548 14.548 -14.548 s 14.548 6.513 14.548 14.548 C 59.548 42.192 53.035 48.705 45 48.705 z"/>
-            </svg>
-            <span>{location}</span>
-        </div>
-
+            <!-- 3. Las Píldoras de Cocina. Mantenemos este diseño porque es bueno para categorías. -->
+            <div class="flex flex-wrap gap-2 mb-4">
+                {
+                    cuisine.map((cuisineKind) => (
+                        <span class="bg-primary/60 text-primary text-xs font-semibold px-2.5 py-0.5 rounded-full dark:bg-sky-900 dark:text-sky-200">
+                            {cuisineKind}
+                        </span>
+                    ))
+                }
             </div>
 
+            <!-- Ubicación (empujada al final) -->
+            <div
+                class="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700 text-sm text-slate-600 dark:text-slate-400 flex items-center gap-2"
+            >
+                <svg
+                    class="w-4 h-4 flex-shrink-0"
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 90 90"
+                    fill="currentColor"
+                    aria-hidden="true"
+                >
+                    <title>Ubicación</title>
+                    <path
+                        d="M 45 0 C 25.463 0 9.625 15.838 9.625 35.375 c 0 8.722 3.171 16.693 8.404 22.861 L 45 90 l 26.97 -31.765 c 5.233 -6.167 8.404 -14.139 8.404 -22.861 C 80.375 15.838 64.537 0 45 0 z M 45 48.705 c -8.035 0 -14.548 -6.513 -14.548 -14.548 c 0 -8.035 6.513 -14.548 14.548 -14.548 s 14.548 6.513 14.548 14.548 C 59.548 42.192 53.035 48.705 45 48.705 z"
+                    ></path>
+                </svg>
 
-
+                <span>{location}</span>
+            </div>
+        </div>
     </div>
-
-
-
 </a>

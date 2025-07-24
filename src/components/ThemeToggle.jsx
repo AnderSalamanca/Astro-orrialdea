@@ -16,6 +16,7 @@ const MoonIcon = () => (
 
 
 export default function ThemeToggle() {
+
   // 1. ESTADO: Guardamos el tema actual ('light' o 'dark')
   // Inicializamos el estado a `null` para evitar el parpadeo en el servidor
   const [theme, setTheme] = useState(null);
@@ -29,32 +30,46 @@ export default function ThemeToggle() {
 
   // 3. EFECTO: Se ejecuta CADA VEZ que el estado `theme` cambia
   useEffect(() => {
+
     if (theme === 'dark') {
+
       document.documentElement.classList.add('dark');
       localStorage.setItem('theme', 'dark');
+
     } else if (theme === 'light') {
+
       document.documentElement.classList.remove('dark');
       localStorage.setItem('theme', 'light');
+
     }
     // No hacemos nada si `theme` es `null` (al inicio)
   }, [theme]); // El [theme] significa "ejecutar cuando `theme` cambie"
 
   // Función que se llama al hacer clic
   const handleToggleClick = () => {
+
     setTheme(theme === 'light' ? 'dark' : 'light');
+
   };
 
   // Si el tema aún no se ha determinado en el cliente, no mostramos nada
   if (theme === null) {
+
     return null;
+
   }
   
   return (
+
     <button
+
       onClick={handleToggleClick}
       class="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400"
+
     >
+
       {theme === 'light' ? <MoonIcon /> : <SunIcon />}
+      
     </button>
   );
 }
