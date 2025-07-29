@@ -1,0 +1,70 @@
+---
+// Recibimos las props específicas para una receta
+const { title, servings, image, imageAlt, description, slug, cookingTime, difficulty } = Astro.props;
+import { Image } from "astro:assets";
+
+// Lógica para los colores de la píldora de dificultad
+const difficultyColors = {
+  Fácil: 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200',
+  Medio: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
+  Difícil: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
+};
+const difficultyClass = difficultyColors[difficulty] || 'bg-slate-100 text-slate-800';
+---
+
+<!-- El enlace ahora apunta a la ruta de recetas -->
+<a href={`/recetas/${slug}`} class="block group h-full">
+
+    <div class="h-full flex flex-col bg-white dark:bg-brand-background dark:bg-slate-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        
+        <!-- SECCIÓN DE IMAGEN (sin cambios, es perfecta) -->
+        <div class="overflow-hidden">
+            <Image 
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                src={image} 
+                alt={imageAlt}
+                width={800}   
+                height={600}
+                format="webp"
+            />
+        </div>
+
+        <!-- SECCIÓN DE CONTENIDO (aquí están los cambios) -->
+        <div class="p-4 flex-grow flex flex-col"> 
+            
+            <!-- 1. Título de la Receta -->
+            <h3 class="text-lg font-bold text-foreground dark:text-slate-100 mb-2 group-hover:text-primary transition-colors">
+                {title}
+            </h3>
+
+            <!-- 2. Descripción Corta -->
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                {description}
+            </p>
+
+            <!-- 3. Pie de Tarjeta con Métricas Clave (empujado al final) -->
+            <div class="mt-auto pt-3 border-t border-slate-200 dark:border-slate-700 text-sm text-slate-700 dark:text-slate-300 flex flex-wrap justify-between items-center gap-y-2 gap-x-4">
+                
+                <!-- Dificultad (con píldora de color) -->
+                <div class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" /></svg>
+                    <span class={`text-xs font-bold px-2 py-0.5 rounded-full ${difficultyClass}`}>
+                        {difficulty}
+                    </span>
+                </div>
+
+                <!-- Tiempo de Cocción -->
+                <div class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <span class="font-medium">{cookingTime}</span>
+                </div>
+
+                <!-- Porciones -->
+                <div class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 002.625.372 9.337 9.337 0 004.121-.952 4.125 4.125 0 00-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 018.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0111.964-4.663c1.11-1.278 2.27-2.731 3.482-4.041a4.882 4.882 0 00-8.684-2.494M12.632 4.673a.837.837 0 01-.527-.247l-1.088-.995a1.833 1.833 0 00-2.6-.27c-1.131.944-2.57 1.29-4.043.902a4.875 4.875 0 00-4.043 4.042c.388 1.473.044 2.912-.902 4.043a1.833 1.833 0 00-.27 2.6l.996 1.088a.837.837 0 01-.247.527l-1.088.995a1.833 1.833 0 00-.27 2.6c.944 1.132 1.29 2.57.902 4.043a4.875 4.875 0 004.043 4.042c1.473-.388 2.912-.044 4.043.902a1.833 1.833 0 002.6.27l1.088-.995a.837.837 0 01.527.247l1.088.995a1.833 1.833 0 002.6.27c1.131-.944 2.57-1.29 4.043-.902a4.875 4.875 0 004.043-4.042c-.388-1.473-.044-2.912.902-4.043a1.833 1.833 0 00.27-2.6l-.995-1.088a.837.837 0 01.247-.527l.995-1.088a1.833 1.833 0 00.27-2.6c-.944-1.132-1.29-2.57-.902-4.043a4.875 4.875 0 00-4.043-4.042c-1.473.388-2.912.044-4.043-.902a1.833 1.833 0 00-2.6-.27l-1.088.995a.837.837 0 01-.527-.247z" /></svg>
+                    <span class="font-medium">{servings}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</a>

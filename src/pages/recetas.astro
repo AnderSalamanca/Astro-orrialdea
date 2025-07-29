@@ -1,0 +1,49 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import Image  from "astro/components/Image.astro";
+import RecipeCard from "../components/RecipeCard.astro";
+import GenericHero from "../components/GenericHero.astro";
+import heroImage from "../assets/recetas/recetas-hero.png";
+---
+
+<Layout pageTitle="Recetas">
+
+  <GenericHero
+    name="Recetas"
+    image={heroImage}
+    imageAlt="Imagen de un receta con mesas y sillas"
+    />
+
+  <section class="py-16">
+
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+      {await getCollection("recetas").then(recetas => 
+        recetas.map(receta => (
+          <RecipeCard
+            slug={receta.slug}
+            title={receta.data.title}
+            servings={receta.data.servings}
+            description={receta.data.description}
+            image={receta.data.image}
+            imageAlt={receta.data.imageAlt}
+            cookingTime={receta.data.cookingTime}
+            difficulty={receta.data.difficulty}
+            />
+        ))
+      )}
+
+    </div>
+
+  </section>
+
+  <Fragment slot="after-footer-scripts">
+
+    <script>
+
+      import '../scripts/scroll-animations.js';
+
+    </script>
+  </Fragment>
+</Layout>
