@@ -34,6 +34,7 @@ const navLinks = [
       <!-- Sección Central: Navegación de Escritorio -->
       <nav class="hidden md:flex md:items-center md:space-x-8">
 
+        <!-- 1. Iteramos sobre los enlaces de navegación y los mostramos -->
         {
           navLinks.map((link) => (
             
@@ -47,13 +48,12 @@ const navLinks = [
         }
       </nav>
 
-      <!-- Sección Derecha: Iconos y Botón Móvil -->
+      <!-- Sección Derecha: Tema y Menú Móvil -->
       <div class="flex items-center gap-4">
         <ThemeToggle client:load />
 
         <!-- Botón del menú hamburguesa (solo visible en móvil) -->
         <div class="md:hidden">
-          <!-- 2. Añade la isla, pásale los enlaces y ponle una directiva client -->
           <MobileMenu navLinks={navLinks} client:load />
         </div>
       </div>
@@ -62,5 +62,6 @@ const navLinks = [
 </header>
 
 <script>
-  import "../scripts/header-animations.js"; // Importa tu script de animación aquí
+// Importamos las animaciones del header para que sea transparente o cambie de color
+  import "../scripts/header-animations.js";
 </script>

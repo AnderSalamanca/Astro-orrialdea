@@ -9,12 +9,14 @@ const difficultyColors = {
   Medio: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200',
   Difícil: 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200',
 };
+// Guardamos la clase de color según la dificultad, en base al prop y la coincidencia en el array
 const difficultyClass = difficultyColors[difficulty] || 'bg-slate-100 text-slate-800';
 ---
 
-<!-- El enlace ahora apunta a la ruta de recetas -->
+<!-- Enlace para apuntar a las recetas en base al slug -->
 <a href={`/recetas/${slug}`} class="block group h-full">
 
+    <!--Contenedor principal de la tarjeta,  -->
     <div class="h-full flex flex-col bg-white dark:bg-brand-background dark:bg-slate-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
         
         <!-- SECCIÓN DE IMAGEN (sin cambios, es perfecta) -->

@@ -1,8 +1,10 @@
 ---
+// Importamos componente image y la imagen que vamos a usar
 import { Image } from 'astro:assets';
-import image from '../assets/hero_principal.png'; // Asegúrate de que la ruta sea correcta
+import image from '../assets/hero_principal.png';
 ---
 
+<!-- Sección donde empieza el hero con sus alturas por tamaño, justificado al centro-->
 <section class="relative h-[60vh] md:h-[70vh] flex items-center justify-center text-center section-fade-in">
     
     <Image
@@ -12,9 +14,11 @@ import image from '../assets/hero_principal.png'; // Asegúrate de que la ruta s
         width={1600}
         height={900}
         format="webp"
+        loading="eager"
+        decoding="async" 
     />
     
-    <!-- Capa de superposición oscura (opcional pero muy recomendado) -->
+    <!-- Capa de superposición oscura para que se vea mejor el texto de encima-->
     <div class="absolute inset-0 bg-black/50"></div>
 
     <!-- Contenedor del contenido (centrado y con ancho máximo) -->
@@ -32,7 +36,7 @@ import image from '../assets/hero_principal.png'; // Asegúrate de que la ruta s
 
         </p>
         
-        <!-- Contenedor de botones (sin cambios, ya están perfectos) -->
+        <!-- Contenedor de botones-->
         <div class="mt-8 flex justify-center gap-4">
 
           <a href="/recetas" class="bg-primary hover:bg-blue text-foreground font-bold py-3 px-6 rounded-lg transition-transform hover:scale-105">

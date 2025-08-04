@@ -53,7 +53,7 @@ export default function MobileMenu({ navLinks }) {
 
           {navLinks.map(link => (
 
-            <a href={link.href} class="text-2xl font-bold hover:text-sky-500">
+            <a href={link.href} class="text-2xl font-bold hover:text-primary">
 
               {link.text}
               
