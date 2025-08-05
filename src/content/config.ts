@@ -23,7 +23,7 @@ const restaurantCollection = defineCollection({
       latitude: z.number(),
       longitude: z.number(),
     }).optional(),
-    cuisine: z.array(z.enum(['Italiana', 'Mexicana', 'Japonesa', 'Vasca', 'Española', 'Mediterránea'])).nonempty(),
+    cuisine: z.array(z.enum(['Italiana', 'Mexicana', 'Japonesa', 'Vasca', 'Española', 'Mediterránea', 'Brasa'])).nonempty(),
     rating: z.number().min(0).max(5),
     priceRange: z.enum(['€', '€€', '€€€', '€€€€']).optional(),
     image: image(),

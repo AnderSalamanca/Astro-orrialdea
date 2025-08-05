@@ -1,0 +1,29 @@
+---
+import Layout from "./Layout.astro";
+import Image from "astro/components/Image.astro";
+const { frontmatter } = Astro.props;
+import RestaurantHero from "../components/RestaurantHero.astro";
+import RecipeHero from "../components/RecipeHero.astro";
+---
+
+<Layout title={frontmatter.name || frontmatter.title}>
+    <!-- LÓGICA CONDICIONAL AQUÍ -->
+    {
+        frontmatter.type === "restaurante" && (
+            <RestaurantHero
+                name={frontmatter.name}
+                cuisine={frontmatter.cuisine}
+                priceRange={frontmatter.priceRange}
+                image={frontmatter.image}
+                imageAlt={frontmatter.imageAlt}
+                rating={frontmatter.rating}
+            />
+        )
+    }
+    {frontmatter.type === "receta" && <RecipeHero frontmatter={frontmatter} />}
+
+    <!-- El resto del layout es común para ambos -->
+    <article class="prose max-w-3xl mx-auto py-12">
+        <slot />
+    </article>
+</Layout>

@@ -1,13 +1,41 @@
 ---
 name: "Malum Rex"
+type: "restaurante"
 location: "Astigarraga"
 cuisine: 
 - Vasca
+- Brasa
 rating: 4
 priceRange: "€€"
 image: "../../assets/restaurantes/malum_rex/malum_rex_hero.jpg"
 imageAlt: "Restaurante Malum Rex"
 description: En el corazón de Astigarraga, cuna de la sidra, Malum Rex ('el rey de la manzana') rinde homenaje al producto con una parrilla moderna y alma tradicional. Aquí, la txuleta a la brasa es tratada con maestría, ofreciendo una experiencia vasca auténtica y refinada.
-
 ---
+{/* 
+  Paso 1: Importamos el componente Image de Astro
+  y las nuevas imágenes de las croquetas y la hamburguesa. 
+  Es crucial darles un nombre de variable descriptivo.
+*/}
+import { Image } from 'astro:assets';
+import imgCroquetas from '../../assets/restaurantes/malum_rex/croquetas.jpg';
+import imgHamburguesa from '../../assets/restaurantes/malum_rex/hamburguesa1.jpg';
 
+## El Rey de la Manzana en Astigarraga
+
+Malum Rex no es una sidrería cualquiera. Es una reinterpretación moderna del asador vasco tradicional, donde el producto es el rey absoluto. El ambiente combina la calidez de la madera con un diseño limpio y funcional.
+
+### Para Abrir Boca: Entrantes que Enamoran
+
+Antes de sumergirnos en los platos fuertes, es casi obligatorio probar sus entrantes. Las croquetas, cremosas por dentro y con un rebozado crujiente y dorado, son el comienzo perfecto. Ya sean de jamón o de txuleta, demuestran el mimo que ponen en cada elaboración.
+
+{/* Paso 2: Colocamos la imagen de las croquetas justo después de hablar de ellas. */}
+<Image src={imgCroquetas} alt="Croquetas caseras de Malum Rex" class="rounded-lg shadow-lg my-6 w-full h-auto" />
+
+### El Giro Moderno: Una Hamburguesa Gourmet
+
+Para aquellos que buscan una alternativa o simplemente aman las buenas hamburguesas, Malum Rex ofrece una sorpresa mayúscula. Con carne de primera calidad, pan brioche tierno y una combinación de ingredientes que realza el sabor de la brasa, su hamburguesa compite al más alto nivel.
+
+{/* Paso 3: Igual que antes, la imagen de la hamburguesa sigue a su descripción. */}
+<Image src={imgHamburguesa} alt="Hamburguesa gourmet a la brasa" class="rounded-lg shadow-lg my-6 w-full h-auto" />
+
+En definitiva, Malum Rex es una parada obligatoria tanto para puristas de la cocina vasca como para aquellos que aprecian los giros modernos y bien ejecutados. ¡Un lugar para repetir!
