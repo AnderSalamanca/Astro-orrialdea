@@ -8,8 +8,6 @@ import RecipeHero from "../components/RecipeHero.astro";
 
 <Layout title={frontmatter.name || frontmatter.title}>
     <!-- LÓGICA CONDICIONAL AQUÍ -->
-    {
-        frontmatter.type === "restaurante" && (
             <RestaurantHero
                 name={frontmatter.name}
                 cuisine={frontmatter.cuisine}
@@ -18,8 +16,7 @@ import RecipeHero from "../components/RecipeHero.astro";
                 imageAlt={frontmatter.imageAlt}
                 rating={frontmatter.rating}
             />
-        )
-    }
+
     {frontmatter.type === "receta" && <RecipeHero frontmatter={frontmatter} />}
 
     <!-- El resto del layout es común para ambos -->
