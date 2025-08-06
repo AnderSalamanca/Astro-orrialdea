@@ -42,7 +42,42 @@ export default {
         // Acento Secundario
         'secondary': '#707954',
         'secondary-foreground': '#FDFBF9',
-      }
+      },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            '--tw-prose-body': theme('colors.foreground'),
+            '--tw-prose-headings': theme('colors.foreground'),
+            '--tw-prose-lead': theme('colors.foreground-muted'),
+            '--tw-prose-links': theme('colors.primary'), // Enlaces con tu color primario
+            '--tw-prose-bold': theme('colors.foreground'),
+            '--tw-prose-counters': theme('colors.secondary'), // Contadores de listas con tu color secundario
+            '--tw-prose-bullets': theme('colors.secondary'), // Viñetas con tu color secundario
+            '--tw-prose-hr': theme('colors.border'),
+            '--tw-prose-quotes': theme('colors.foreground-muted'),
+            '--tw-prose-quote-borders': theme('colors.border'),
+            '--tw-prose-captions': theme('colors.foreground-muted'),
+            '--tw-prose-code': theme('colors.primary'),
+            '--tw-prose-pre-code': theme('colors.dark-foreground'),
+            '--tw-prose-pre-bg': theme('colors.dark-background-subtle'),
+            // --- COLORES INVERTIDOS (MODO OSCURO) ---
+            '--tw-prose-invert-body': theme('colors.dark-foreground'),
+            '--tw-prose-invert-headings': theme('colors.dark-foreground'),
+            '--tw-prose-invert-lead': theme('colors.dark-foreground-muted'),
+            '--tw-prose-invert-links': theme('colors.primary'), // Mantenemos el mismo color de enlace
+            '--tw-prose-invert-bold': theme('colors.dark-foreground'),
+            '--tw-prose-invert-counters': theme('colors.dark-foreground-muted'),
+            '--tw-prose-invert-bullets': theme('colors.secondary'),
+            '--tw-prose-invert-hr': theme('colors.dark-border'),
+            '--tw-prose-invert-quotes': theme('colors.dark-foreground-muted'),
+            '--tw-prose-invert-quote-borders': theme('colors.dark-border'),
+            '--tw-prose-invert-captions': theme('colors.dark-foreground-muted'),
+            '--tw-prose-invert-code': theme('colors.dark-foreground'),
+            '--tw-prose-invert-pre-code': theme('colors.dark-foreground'),
+            '--tw-prose-invert-pre-bg': theme('colors.dark-background'),
+          },
+        },
+      }),
     },
   },
   plugins: [

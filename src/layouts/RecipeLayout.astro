@@ -1,0 +1,24 @@
+---
+import Layout from "./Layout.astro";
+import Image from "astro/components/Image.astro";
+const { frontmatter } = Astro.props;
+import RecipeHero from "../components/RecipeHero.astro";
+---
+
+<Layout pageTitle={frontmatter.title}>
+    <!-- LÓGICA CONDICIONAL AQUÍ -->
+            <RecipeHero
+                title={frontmatter.title}
+                cuisine={frontmatter.cuisine}
+                servings={frontmatter.servings}
+                image={frontmatter.image}
+                imageAlt={frontmatter.imageAlt}
+                cookingTime={frontmatter.cookingTime}
+                difficulty={frontmatter.difficulty}
+            />
+
+    <!-- El resto del layout es común para ambos -->
+    <article class="prose max-w-3xl mx-auto py-12">
+        <slot />
+    </article>
+</Layout>

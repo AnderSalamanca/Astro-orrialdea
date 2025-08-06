@@ -2,6 +2,7 @@
 import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro'; // Nuestro layout base
 import { Image } from 'astro:assets';
+import RecipeLayout from '../../layouts/RecipeLayout.astro';
 
 // 1. Astro ejecuta esto para saber qué páginas crear
 export async function getStaticPaths() {
@@ -13,6 +14,10 @@ export async function getStaticPaths() {
 }
 
 const { receta } = Astro.props;
+const { data } = receta;
 const { Content } = await receta.render(); // Obtenemos el contenido HTML del Markdown
 ---
 
+<RecipeLayout frontmatter={data}>
+  <Content />
+</ResraurantLayout>

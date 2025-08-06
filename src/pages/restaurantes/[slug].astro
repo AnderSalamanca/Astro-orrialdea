@@ -4,7 +4,7 @@ import { getCollection, getEntry } from 'astro:content';
 import Layout from '../../layouts/Layout.astro'; // Nuestro layout base
 import { Image } from 'astro:assets';
 import RestaurantHero from '../../components/RestaurantHero.astro';
-import MarkDownLayout from '../../layouts/MarkDownLayout.astro';
+import RestaurantLayout from '../../layouts/RestaurantLayout.astro';
 
 // 1. Astro ejecuta esto para saber qué páginas crear
 export async function getStaticPaths() {
@@ -19,6 +19,6 @@ const { restaurante } = Astro.props;
 const { data } = restaurante;
 const { Content } = await restaurante.render(); // Obtenemos el contenido HTML del Markdown
 ---
-<MarkDownLayout frontmatter={data}>
+<RestaurantLayout frontmatter={data}>
   <Content />
-</MarkDownLayout>
+</ResraurantLayout>

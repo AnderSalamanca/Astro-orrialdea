@@ -6,7 +6,7 @@ import RestaurantHero from "../components/RestaurantHero.astro";
 import RecipeHero from "../components/RecipeHero.astro";
 ---
 
-<Layout title={frontmatter.name || frontmatter.title}>
+<Layout pageTitle={frontmatter.name || frontmatter.title}>
     <!-- LÓGICA CONDICIONAL AQUÍ -->
             <RestaurantHero
                 name={frontmatter.name}
