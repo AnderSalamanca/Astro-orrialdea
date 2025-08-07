@@ -20,4 +20,13 @@ const { Content } = await receta.render(); // Obtenemos el contenido HTML del Ma
 
 <RecipeLayout frontmatter={data}>
   <Content />
+  <Fragment slot="after-footer-scripts">
+
+    <script>
+
+      import '../scripts/scroll-animations.js';
+
+    </script>
+
+  </Fragment>
 </ResraurantLayout>

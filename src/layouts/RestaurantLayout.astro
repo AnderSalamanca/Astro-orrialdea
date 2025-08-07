@@ -23,4 +23,13 @@ import RecipeHero from "../components/RecipeHero.astro";
     <article class="prose max-w-3xl mx-auto py-12">
         <slot />
     </article>
+    <Fragment slot="after-footer-scripts">
+
+        <script>
+    
+          import '../scripts/scroll-animations.js';
+    
+        </script>
+    
+      </Fragment>
 </Layout>
