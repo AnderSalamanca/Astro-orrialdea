@@ -4,6 +4,9 @@ import Layout from '../layouts/Layout.astro';
 import MainHero from '../components/MainHero.astro';
 import { getCollection } from 'astro:content';
 import LatestPostCard from '../components/LatestPostCard.astro';
+import CardCTA from '../components/CardCTA.astro';
+import imgRestaurantes from '../assets/restaurantes/cta-restaurantes.jpg';
+import imgRecetas from '../assets/recetas/cta-recetas.jpg';
 const allRestaurants = await getCollection('restaurantes');
 const allRecipes = await getCollection('recetas');
 // ...otros imports si los tienes
@@ -58,6 +61,37 @@ const latestPosts = sortedPosts.slice(0, 3);
         />
       ))}
 
+    </div>
+  </section>
+
+  <section class="py-16 bg-brand-background/50 dark:bg-slate-800">
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- Título opcional para la sección -->
+      <h2 class="text-3xl font-bold text-center mb-12">Elige Tu Aventura</h2>
+      
+      <!-- Un grid que en móvil es 1 columna y en tablet/escritorio son 2 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        
+        <CardCTA
+        href="/restaurantes"
+        title="Guía de Restaurantes"
+        description="Mi selección personal de lugares con alma donde se come de verdad."
+        imageSrc={imgRestaurantes}
+        imageAlt="Interior de un restaurante acogedor"
+        buttonText="Descubrir Lugares"
+      />
+    
+      <!-- Tarjeta para Recetas -->
+      <CardCTA
+        href="/recetas"
+        title="Mi Recetario"
+        description="Los platos que me hacen feliz, explicados paso a paso para que triunfes."
+        imageSrc={imgRecetas}
+        imageAlt="Un plato de pasta casera recién servido"
+        buttonText="Empezar a Cocinar"
+      />
+  
+      </div>
     </div>
   </section>
 
