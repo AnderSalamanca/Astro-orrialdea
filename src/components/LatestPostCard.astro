@@ -1,0 +1,32 @@
+---
+const { title, description, image, slug, type } = Astro.props;
+import { Image } from 'astro:assets';
+---
+
+<a href={slug} class="block group h-full">
+
+    <div class="h-full flex flex-col bg-white dark:bg-brand-background dark:bg-slate-800 rounded-xl overflow-hidden shadow-md transition-all duration-300 hover:shadow-xl hover:-translate-y-1 section-fade-in">
+        <div class="overflow-hidden">
+            <Image 
+                class="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                src={image} 
+                alt={`${title} - ${type}`}
+                width={800}   
+                height={600}
+                format="webp"
+            />
+        </div>
+
+        <div class="p-4 flex-grow flex flex-col"> 
+            
+            <!-- 1. Título de la Receta, hover con transicion para cambio de color -->
+            <h3 class="text-lg font-bold text-foreground dark:text-slate-100 mb-2 group-hover:text-primary transition-colors">
+                {title}
+            </h3>
+
+            <!-- 2. Descripción Corta, line-clamo-2 hace que solo se escriban dos lineas, en caso de haber mas saldrian 3 puntitos -->
+            <p class="text-sm text-slate-600 dark:text-slate-400 mb-4 line-clamp-2">
+                {description}
+            </p>
+            </div>
+</a>

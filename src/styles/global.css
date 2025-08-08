@@ -10,6 +10,42 @@
     opacity: 1;
     transform: translateY(0);
   }
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000), 
+                transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  }
+  .fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  
+  /* --- NUEVA: Animación de entrada desde la IZQUIERDA --- */
+  .fade-in-left {
+    opacity: 0;
+    transform: translateX(-30px); /* Empieza 30px a la izquierda */
+    transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000), 
+                transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  }
+  .fade-in-left.is-visible {
+    opacity: 1;
+    transform: translateX(0); /* Vuelve a su posición original */
+  }
+  
+  
+  /* --- NUEVA: Animación de entrada desde la DERECHA --- */
+  .fade-in-right {
+    opacity: 0;
+    transform: translateX(30px); /* Empieza 30px a la derecha */
+    transition: opacity 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000), 
+                transform 0.6s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  }
+  .fade-in-right.is-visible {
+    opacity: 1;
+    transform: translateX(0); /* Vuelve a su posición original */
+  }
 
   #main-header {
     @apply bg-transparent transition-all duration-300 ease-in-out;

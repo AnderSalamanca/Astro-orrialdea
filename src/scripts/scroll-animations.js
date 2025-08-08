@@ -1,5 +1,5 @@
 // 1. Seleccionamos todos los elementos que queremos animar
-const sectionsToAnimate = document.querySelectorAll('.section-fade-in');
+const sectionsToAnimate = document.querySelectorAll('.section-fade-in, .fade-in-up, .fade-in-left, .fade-in-right');
 
 // Si no hay elementos que animar en esta página, no hacemos nada más.
 if (sectionsToAnimate.length > 0) {

@@ -2,7 +2,38 @@
 // src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 import MainHero from '../components/MainHero.astro';
+import { getCollection } from 'astro:content';
+import LatestPostCard from '../components/LatestPostCard.astro';
+const allRestaurants = await getCollection('restaurantes');
+const allRecipes = await getCollection('recetas');
 // ...otros imports si los tienes
+
+const formattedRestaurants = allRestaurants.map(post => ({
+  title: post.data.name,           // Unificamos 'name' a 'title'
+  description: post.data.description,
+  image: post.data.image,          // Unificamos a 'image'
+  publishDate: post.data.publishDate,
+  slug: `/restaurantes/${post.slug}/`, // Construimos la URL completa
+  type: 'restaurante'              // ¡Añadimos el tipo para distinguirlos!
+}));
+
+// Traducimos los datos de las recetas
+const formattedRecipes = allRecipes.map(post => ({
+  title: post.data.title,
+  description: post.data.description,
+  image: post.data.image,          // Asumimos que también se llama 'image' en recetas
+  publishDate: post.data.publishDate,
+  slug: `/recetas/${post.slug}/`,
+  type: 'receta'
+}));
+
+const allPosts = [...formattedRestaurants, ...formattedRecipes];
+
+// 2. Ordenamos el array combinado por fecha, de más nueva a más antigua
+const sortedPosts = allPosts.sort((a, b) => b.publishDate.valueOf() - a.publishDate.valueOf());
+
+// 3. Nos quedamos solo con los 3 más recientes (o el número que quieras)
+const latestPosts = sortedPosts.slice(0, 3);
 ---
 <Layout pageTitle="Inicio">
 
@@ -12,8 +43,22 @@ import MainHero from '../components/MainHero.astro';
   <!-- Aquí podría empezar el resto de tu contenido -->
   <section class="py-16">
 
-    <h2 class="text-3xl font-bold text-center">Contenido debajo del Hero</h2>
+    <h2 class="text-3xl font-bold text-center">Recién Salido del Horno</h2>
+    <p class="text-center text-gray-600 mb-8">Descubre las últimas recetas y restaurantes destacados</p>
 
+    <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+
+      {latestPosts.map(post => (
+        <LatestPostCard
+          title={post.title}
+          description={post.description}
+          image={post.image}
+          slug={post.slug}
+          type={post.type}
+        />
+      ))}
+
+    </div>
   </section>
 
   <Fragment slot="after-footer-scripts">

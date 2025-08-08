@@ -19,6 +19,7 @@ const restaurantCollection = defineCollection({
   schema: ({ image }) => z.object({
     name: z.string(),
     location: z.string(),
+    publishDate: z.date(),
     coordinates: z.object({
       latitude: z.number(),
       longitude: z.number(),
@@ -40,6 +41,7 @@ const recetasCollection = defineCollection({
   type: 'content',
   schema: ({ image }) => z.object({
     title: z.string(),
+    publishDate: z.date(),
     servings: z.number(),
     image: image(),
     imageAlt: z.string(),
