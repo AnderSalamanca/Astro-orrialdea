@@ -5,7 +5,7 @@ const { frontmatter } = Astro.props;
 import RecipeHero from "../components/RecipeHero.astro";
 ---
 
-<Layout pageTitle={frontmatter.title}>
+<Layout pageTitle={frontmatter.title} description={frontmatter.description}>
     <!-- LÓGICA CONDICIONAL AQUÍ -->
             <RecipeHero
                 title={frontmatter.title}
