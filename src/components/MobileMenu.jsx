@@ -16,7 +16,9 @@ export default function MobileMenu({ navLinks }) {
   return (
     <>
       {/* El Botón de Hamburguesa */}
-      <button onClick={toggleMenu} class="relative z-20">
+      <button onClick={toggleMenu} class="relative z-20" aria-label="Abrir menú móvil">
+
+        {/* Icono de hamburguesa o 'X' */}
 
         <svg
 

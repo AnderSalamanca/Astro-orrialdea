@@ -66,6 +66,7 @@ export default function ThemeToggle() {
       onClick={handleToggleClick}
       class="text-slate-600 dark:text-slate-300 hover:text-sky-500 dark:hover:text-sky-400"
 
+      aria-label={theme === 'light' ? 'Activar modo oscuro' : 'Activar modo claro'}
     >
 
       {theme === 'light' ? <MoonIcon /> : <SunIcon />}
