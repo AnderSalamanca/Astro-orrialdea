@@ -1,0 +1,120 @@
+---
+---
+
+<div 
+  id="chatbot-container"
+  class="border border-slate-300 rounded-lg w-full max-w-md font-sans shadow-lg overflow-hidden bg-white"
+>
+  <!-- Ventana de mensajes -->
+  <div 
+    id="chat-window"
+    class="h-[500px] p-5 overflow-y-auto bg-slate-50 flex flex-col gap-4"
+  >
+    <!-- Mensaje inicial del bot -->
+    <div class="message self-start">
+      <p class="bg-slate-200 text-black py-2 px-4 rounded-2xl max-w-[80%]">
+        ¡Hola! Soy tu asistente. ¿En qué puedo ayudarte?
+      </p>
+    </div>
+  </div>
+  
+  <!-- Contenedor del input del usuario -->
+  <div 
+    id="input-container"
+    class="flex items-center p-3 border-t border-slate-300"
+  >
+    <input 
+      type="text" 
+      id="user-input" 
+      placeholder="Escribe tu mensaje aquí..."
+      class="flex-grow border border-slate-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    />
+    <button 
+      id="send-button"
+      class="bg-blue-500 text-white rounded-full py-2 px-4 ml-2 cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+    >
+      Enviar
+    </button>
+  </div>
+</div>
+
+<script>
+const chatWindow = document.getElementById('chat-window');
+const userInput = document.getElementById('user-input');
+const sendButton = document.getElementById('send-button');
+
+function addMessage(text, sender) {
+  const messageContainer = document.createElement('div');
+  messageContainer.className = 'message';
+
+  if (sender === 'user') {
+    messageContainer.classList.add('self-end');
+  } else {
+    messageContainer.classList.add('self-start');
+  }
+  
+  const messageP = document.createElement('p');
+  messageP.textContent = text;
+  messageP.className = 'py-2 px-4 rounded-2xl max-w-[80%] break-words';
+
+  if (sender === 'user') {
+    messageP.classList.add('bg-blue-500', 'text-white');
+  } else {
+    messageP.classList.add('bg-slate-200', 'text-black');
+  }
+
+  messageContainer.appendChild(messageP);
+  chatWindow.appendChild(messageContainer);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+}
+
+async function handleUserMessage() {
+  const messageText = userInput.value.trim();
+  if (!messageText) return;
+
+  addMessage(messageText, 'user');
+  userInput.value = '';
+  
+  userInput.disabled = true;
+  sendButton.disabled = true;
+  addMessage("...", 'bot');
+
+  try {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // Asegúrate de que esta línea es correcta
+      body: JSON.stringify({ message: messageText }),
+    });
+
+    const thinkingMessage = chatWindow.lastChild;
+    chatWindow.removeChild(thinkingMessage);
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      // Si la respuesta del servidor tiene un error, mostramos el mensaje de error
+      throw new Error(data.error || "Ocurrió un error en el servidor.");
+    }
+    
+    addMessage(data.reply, 'bot');
+
+  } catch (error) {
+    console.error("Error al contactar con la API:", error);
+    addMessage(`Lo siento, algo salió mal: ${error.message}`, 'bot');
+  } finally {
+    userInput.disabled = false;
+    sendButton.disabled = false;
+    userInput.focus();
+  }
+}
+
+sendButton.addEventListener('click', handleUserMessage);
+userInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    handleUserMessage();
+  }
+});
+</script>
