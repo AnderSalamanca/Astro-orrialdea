@@ -1,0 +1,6 @@
+# Permite el acceso a todos los robots a todo el contenido
+User-agent: *
+Allow: /
+
+# Indica la ubicación de tu mapa del sitio (sitemap)
+Sitemap: https://astro-orrialdea.pages.dev/sitemap-index.xml

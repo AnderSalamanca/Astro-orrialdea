@@ -9,9 +9,13 @@ import mdx from '@astrojs/mdx';
 
 import { imageService } from "@unpic/astro/service";
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
 
-  integrations: [tailwind(),preact(), mdx()]
+  site: 'https://astro-orrialdea.pages.dev',
+
+  integrations: [tailwind(), preact(), mdx(), sitemap()]
 
 });
